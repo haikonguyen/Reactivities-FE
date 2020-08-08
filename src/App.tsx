@@ -1,34 +1,35 @@
-import React from 'react';
-import {Header, Icon, List} from 'semantic-ui-react'
-import './App.css';
-import axios from 'axios';
+import React from "react";
+import { Header, Icon, List } from "semantic-ui-react";
+import "./App.css";
+import axios from "axios";
+import "semantic-ui-css/semantic.min.css";
 
 class App extends React.Component {
-    state = {
-        values: []
-    }
+  state = {
+    values: [],
+  };
 
-    componentDidMount() {
-        axios.get('http://localhost:5000/api/values').then(response => {
-            this.setState({values: response.data})
-        })
-    }
+  componentDidMount() {
+    axios.get("http://localhost:5000/api/values").then((response) => {
+      this.setState({ values: response.data });
+    });
+  }
 
-    render() {
-        return (
-            <div>
-                <Header as='h2'>
-                    <Icon name='plug'/>
-                    <Header.Content>Uptime Guarantee</Header.Content>
-                </Header>
-                <List>
-                    {this.state.values.map((value: any) => (
-                        <List.Item key={value.id}>{value.name}</List.Item>
-                    ))}
-                </List>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Header as="h2">
+          <Icon name="users" />
+          <Header.Content>Reactivities</Header.Content>
+        </Header>
+        <List>
+          {this.state.values.map((value: any) => (
+            <List.Item key={value.id}>{value.name}</List.Item>
+          ))}
+        </List>
+      </div>
+    );
+  }
 }
 
 export default App;
