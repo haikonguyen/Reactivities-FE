@@ -4,9 +4,15 @@ import { IActivity } from "../../../app/models/activity";
 
 interface IProps {
   activity: IActivity;
+  setEditMode: (editMode: boolean) => void;
+  setSelectedActivity: (activity: IActivity | null) => void;
 }
 
-const ActivityDetails: FC<IProps> = ({ activity }) => {
+const ActivityDetails: FC<IProps> = ({
+  activity,
+  setEditMode,
+  setSelectedActivity,
+}) => {
   return (
     <Card>
       <Image
@@ -23,8 +29,18 @@ const ActivityDetails: FC<IProps> = ({ activity }) => {
       </Card.Content>
       <Card.Content extra>
         <Button.Group>
-          <Button basic color="blue" content="Edit" />
-          <Button basic color="grey" content="Cancel" />
+          <Button
+            onClick={() => setEditMode(true)}
+            basic
+            color="blue"
+            content="Edit"
+          />
+          <Button
+            onClick={() => setSelectedActivity(null)}
+            basic
+            color="grey"
+            content="Cancel"
+          />
         </Button.Group>
       </Card.Content>
     </Card>
